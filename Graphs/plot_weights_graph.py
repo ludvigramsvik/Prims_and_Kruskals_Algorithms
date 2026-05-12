@@ -19,7 +19,7 @@ class PlotWeightsGraph:
         plt.show()
 
     @staticmethod
-    def plot_mst_comparison(original, MST=None):
+    def plot_mst_comparison(original, MST=None, MST_title="Minimum Spanning Tree"):
         """
         Plot the original graph and its Minimum Spanning Tree side by side.
 
@@ -27,6 +27,7 @@ class PlotWeightsGraph:
             original: A NetworkX graph or NumPy adjacency matrix for the original graph.
             MST: Optional NetworkX graph for the MST. If None, the MST is computed from the original.
         """
+        
         if isinstance(original, np.ndarray):
             original = nx.from_numpy_array(original)
         elif not isinstance(original, nx.Graph):
@@ -70,11 +71,11 @@ class PlotWeightsGraph:
         mst_labels = nx.get_edge_attributes(mst, 'weight')
         nx.draw_networkx_edge_labels(mst, pos, edge_labels=mst_labels, font_size=10)
 
-        plt.title("Minimum Spanning Tree (MST)")
+        plt.title(f"{MST_title}")
         plt.axis('off')
 
         plt.tight_layout()
         plt.show()
 
         total_weight = sum(data['weight'] for _, _, data in mst.edges(data=True))
-        print(f"\nTotal weight of MST: {total_weight}")
+        print(f"\nTotal weight of {MST_title}: {total_weight}")
