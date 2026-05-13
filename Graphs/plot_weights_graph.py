@@ -2,6 +2,9 @@ import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
 
+# This code is AI generated. But its just to plot the graphs with the weights.
+# I didnt realy care how the graphs was plotted, just that we got good looking graphs.
+
 class PlotWeightsGraph:
     def __init__(self, graph, random_seed=42):
         self.graph = graph
